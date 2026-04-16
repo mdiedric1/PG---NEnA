@@ -1,0 +1,5 @@
+# But use a different line length.
+line-length = 160
+
+[lint]
+select = ["ALL"]
