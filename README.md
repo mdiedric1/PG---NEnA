@@ -39,7 +39,8 @@ gitGraph
 
 ```
 
-'main' receives continuous software updates by the users (direct commits are prohibited).
+'main' receives increments/releases (direct commits are prohibited).
+'continuous_development' receives continuous feature updates.
 Branches like 'feature/task_n' as well as 'hotfix/task_m' are the work task branches. 
 Users will adapt/update their code and commit their changes here.
 In order to update 'main' with the content of the task based branches, a review process is engaged via a
