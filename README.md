@@ -11,27 +11,36 @@ A general minimal branching scheme is shown below:
 %%{init: { 'logLevel': 'debug', 'theme': 'dark', 'themeVariables': {
               'commitLabelColor': '#ffffff'} } }%%
 gitGraph
-    commit id: "Initial Commit" type: HIGHLIGHT tag: "v2.0.0"
+    commit id: "Initial Commit" type: HIGHLIGHT tag: "v0.1.0"
+    branch continuous_development
+    checkout continuous_development
+    commit
     branch feature/task_1
     commit
     commit
-    checkout main
-    branch feature/task_2
-    checkout feature/task_2
+    checkout continuous_development
+    branch chore/task_2
+    checkout chore/task_2
     commit
     commit
+    checkout continuous_development
+    merge feature/task_1 id: "v1.0.0"
+    merge chore/task_2 id: "v1.1.0"
     checkout main
-    merge feature/task_1 id: "v2.1.0"
-    merge feature/task_2 id: "v3.0.0"
+    merge continuous_development type: HIGHLIGHT tag: "v1.1.0"
+    checkout continuous_development
     branch hotfix/task_3
     checkout hotfix/task_3
     commit
+    checkout continuous_development
+    merge hotfix/task_3 id: "v1.1.1"
     checkout main
-    merge hotfix/task_3 id: "v3.0.1"
-    checkout feature/task_1
+    merge continuous_development type: HIGHLIGHT tag: "v1.1.1"
+
 ```
 
-'main' receives continuous software updates by the users (direct commits are prohibited).
+'main' receives increments/releases (direct commits are prohibited).
+'continuous_development' receives continuous feature updates.
 Branches like 'feature/task_n' as well as 'hotfix/task_m' are the work task branches. 
 Users will adapt/update their code and commit their changes here.
 In order to update 'main' with the content of the task based branches, a review process is engaged via a
